@@ -1,6 +1,6 @@
 resource "azurerm_app_service_plan" "this" {
 	name                = coalesce(var.plan_name, "${var.name}-plan")
-	location            = var.location
+	location            = var.region
 	resource_group_name = var.resource_group_name
 
 	sku {
@@ -13,7 +13,7 @@ resource "azurerm_app_service_plan" "this" {
 
 resource "azurerm_app_service" "this" {
 	name                = var.name
-	location            = var.location
+	location            = var.region
 	resource_group_name = var.resource_group_name
 	app_service_plan_id = azurerm_app_service_plan.this.id
 

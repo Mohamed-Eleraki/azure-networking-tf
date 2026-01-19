@@ -14,7 +14,7 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "location" {
+variable "region" {
   description = "Azure location/region for the resources"
   type        = string
 }
