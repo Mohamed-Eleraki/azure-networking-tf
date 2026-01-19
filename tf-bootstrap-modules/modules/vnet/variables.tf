@@ -8,7 +8,7 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "location" {
+variable "region" {
   description = "Azure region to create resources in (e.g. eastus)"
   type        = string
 }
