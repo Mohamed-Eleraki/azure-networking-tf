@@ -57,13 +57,13 @@ variable "image_publisher" {
 variable "image_offer" {
   description = "Image offer"
   type        = string
-  default     = "UbuntuServer"
+  default     = "0001-com-ubuntu-server-jammy"
 }
 
 variable "image_sku" {
   description = "Image SKU"
   type        = string
-  default     = "22_04-lts"
+  default     = "22_04-lts-gen2"
 }
 
 variable "image_version" {

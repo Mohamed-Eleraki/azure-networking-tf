@@ -38,3 +38,13 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "default_outbound_access_enabled" {
+  description = "Enable default outbound access for the subnet"
+  type        = bool
+  default     = true
+  validation {
+    condition     = var.default_outbound_access_enabled == true || var.default_outbound_access_enabled == false
+    error_message = "default_outbound_access_enabled must be a boolean value"
+  }
+}

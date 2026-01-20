@@ -95,6 +95,7 @@ module "vnet_hub1_netspoke" {
   address_space = ["10.1.0.0/16"]
   subnet_name        = module.naming_hub1_netspoke_subnet.subnet_name
   subnet_prefix      = "10.1.0.0/16"
+  default_outbound_access_enabled = true
   tags               = local.all_tags
 }
 module "vnet_hub2_netspoke" {
@@ -105,6 +106,7 @@ module "vnet_hub2_netspoke" {
   address_space = ["10.2.0.0/16"]
   subnet_name        = module.naming_hub2_netspoke_subnet.subnet_name
   subnet_prefix      = "10.2.0.0/16"
+  default_outbound_access_enabled = false
   tags               = local.all_tags
 }
 
@@ -126,15 +128,19 @@ module "vm_hub1" {
 ####################
 module "private_dns_zone_hub1" {
     source = "../../tf-bootstrap-modules/modules/private_dns_zone"
-    private_dns_zone_name = module.naming_hub1_prv_dnszone.private_dns_zone_name
+    # private_dns_zone_name = module.naming_hub1_prv_dnszone.private_dns_zone_name
+    private_dns_zone_name = "netspoke.hub1.internal"
     resource_group_name = module.rg_hub1_netspoke.resource_group_name
+    virtual_network_id = module.vnet_hub1_netspoke.vnet_id
     tags                = local.all_tags
 }
 
 module "private_dns_zone_hub2" {
     source = "../../tf-bootstrap-modules/modules/private_dns_zone"
-    private_dns_zone_name = module.naming_hub2_prv_dnszone.private_dns_zone_name
+    # private_dns_zone_name = module.naming_hub2_prv_dnszone.private_dns_zone_name
+    private_dns_zone_name = "netspoke.hub2.internal"
     resource_group_name = module.rg_hub2_netspoke.resource_group_name
+    virtual_network_id = module.vnet_hub2_netspoke.vnet_id
     tags                = local.all_tags
 }
 
