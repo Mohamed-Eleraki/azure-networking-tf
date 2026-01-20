@@ -2,7 +2,8 @@ resource "azurerm_public_ip" "pip" {
 	name                = "${var.vm_name}-pip"
 	location            = var.region
 	resource_group_name = var.resource_group_name
-	allocation_method   = "Dynamic"
+	allocation_method   = "Static"
+	sku = "Standard"
 	tags                = var.tags
 }
 
@@ -27,6 +28,7 @@ resource "azurerm_virtual_machine" "vm" {
 	vm_size               = var.vm_size
 	delete_data_disks_on_termination = true
     delete_os_disk_on_termination    = true
+
 	storage_os_disk {
 		name              = "${var.vm_name}-osdisk"
 		caching           = "ReadWrite"
@@ -55,4 +57,29 @@ resource "azurerm_virtual_machine" "vm" {
 	}
 
 	tags = var.tags
+}
+
+resource "azurerm_network_security_group" "vm_nsg" {
+  name                = "${var.vm_name}-nsg"
+  location            = var.region
+  resource_group_name = var.resource_group_name
+  tags                = var.tags
+}
+resource "azurerm_network_security_rule" "allow_ssh_any_where" {
+  name                        = "Allow-SSH-From-Office"
+  priority                    = 1000
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "22"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.vm_nsg.name
+  resource_group_name         = var.resource_group_name
+}
+
+resource "azurerm_network_interface_security_group_association" "nsg_association" {
+  network_interface_id      = azurerm_network_interface.nic.id
+  network_security_group_id = azurerm_network_security_group.vm_nsg.id
 }

@@ -42,3 +42,15 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "private_endpoint_ip" {
+  description = "Private IP address (or CIDR) of the private endpoint allowed to access the webapp on port 80. If null, no NSG will be created."
+  type        = string
+  default     = null
+}
+
+variable "subnet_id" {
+  description = "Optional subnet ID to associate the created NSG with. If null, NSG is created but not associated."
+  type        = string
+  default     = null
+}
