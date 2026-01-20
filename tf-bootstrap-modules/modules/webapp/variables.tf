@@ -31,6 +31,12 @@ variable "sku_size" {
   default     = "B1"
 }
 
+variable "os_type" {
+  description = "Operating system for the Service Plan: Windows or Linux"
+  type        = string
+  default     = "Windows"
+}
+
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)

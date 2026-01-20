@@ -1,21 +1,20 @@
-resource "azurerm_app_service_plan" "this" {
+resource "azurerm_service_plan" "service_plan" {
 	name                = coalesce(var.plan_name, "${var.name}-plan")
 	location            = var.region
 	resource_group_name = var.resource_group_name
 
-	sku {
-		tier = var.sku_tier
-		size = var.sku_size
-	}
+	os_type = var.os_type
+
+	sku_name = var.sku_size
 
 	tags = var.tags
 }
 
-resource "azurerm_app_service" "this" {
+resource "azurerm_app_service" "app_service" {
 	name                = var.name
 	location            = var.region
 	resource_group_name = var.resource_group_name
-	app_service_plan_id = azurerm_app_service_plan.this.id
+	app_service_plan_id = azurerm_service_plan.service_plan.id
 
 	site_config {
 		always_on = true
