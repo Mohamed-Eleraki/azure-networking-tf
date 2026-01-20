@@ -40,31 +40,31 @@ module "naming_hub2_netspoke_subnet" {
 module "naming_vm" {
   source = "../../tf-bootstrap-modules/modules/naming"
   environment = "hub1"
-  sysrole =      "vm"
+  sysrole =      "shared"
 }
 
 module "naming_hub1_prv_dnszone" {
   source = "../../tf-bootstrap-modules/modules/naming"
   environment = "hub1"
-  sysrole =      "prv-dnszone"
+  sysrole =      "netspoke"
 }
 
 module "naming_hub2_prv_dnszone" {
   source = "../../tf-bootstrap-modules/modules/naming"
   environment = "hub1"
-  sysrole =      "prv-dnszone"
+  sysrole =      "netspoke"
 }
 
 module "naming_webapp" {
   source = "../../tf-bootstrap-modules/modules/naming"
   environment = "hub1"
-  sysrole =      "webapp"
+  sysrole =      "shared"
 }
 
 module "naming_prv_endpoint" {
   source = "../../tf-bootstrap-modules/modules/naming"
   environment = "hub1"
-  sysrole =      "prv-endpoint"
+  sysrole =      "netspoke"
 }
 
 ##################

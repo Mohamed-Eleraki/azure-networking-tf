@@ -11,7 +11,7 @@ variable "sysrole" {
   description = "The system role for the resources (e.g., mgmt, shared, netspoke)."
   type        = string
   validation {
-   condition = contains(["mgmt", "shared", "landing", "workloads"], var.sysrole)
+   condition = contains(["mgmt", "shared", "netspoke"], var.sysrole)
    error_message = "value must be one of 'mgmt', 'shared', 'landing', or 'workloads'."
   }
 }
