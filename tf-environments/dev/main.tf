@@ -1,0 +1,164 @@
+##################
+# Naming modules #
+##################
+module "naming_hub1_netspoke_rg" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "netspoke"
+}
+
+module "naming_hub2_netspoke_rg" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub2"
+  sysrole =      "netspoke"
+}
+
+module "naming_hub1_netspoke_vnet" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "netspoke"
+}
+
+module "naming_hub2_netspoke_vnet" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub2"
+  sysrole =      "netspoke"
+}
+
+module "naming_hub1_netspoke_subnet" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "netspoke"
+}
+
+module "naming_hub2_netspoke_subnet" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub2"
+  sysrole =      "netspoke"
+}
+
+module "naming_vm" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "shared"
+}
+
+module "naming_hub1_prv_dnszone" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "netspoke"
+}
+
+module "naming_hub2_prv_dnszone" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "netspoke"
+}
+
+module "naming_webapp" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "shared"
+}
+
+module "naming_prv_endpoint" {
+  source = "../../tf-bootstrap-modules/modules/naming"
+  environment = "hub1"
+  sysrole =      "netspoke"
+}
+
+##################
+# Resource Group #
+##################
+module "rg_hub1_netspoke" {
+  source              = "../../tf-bootstrap-modules/modules/rg"
+  resource_group_name  = module.naming_hub1_netspoke_rg.rg_name
+  region            = var.region
+  tags                = local.all_tags
+}
+
+module "rg_hub2_netspoke" {
+  source              = "../../tf-bootstrap-modules/modules/rg"
+  resource_group_name  = module.naming_hub2_netspoke_rg.rg_name
+  region            = var.region
+  tags                = local.all_tags
+}
+
+###################
+# Virtual Network #
+###################
+module "vnet_hub1_netspoke" {
+  source              = "../../tf-bootstrap-modules/modules/vnet"
+  name               = module.naming_hub1_netspoke_vnet.vnet_name
+  region = var.region
+  resource_group_name = module.rg_hub1_netspoke.resource_group_name
+  address_space = ["10.1.0.0/16"]
+  subnet_name        = module.naming_hub1_netspoke_subnet.subnet_name
+  subnet_prefix      = "10.1.0.0/16"
+  tags               = local.all_tags
+}
+module "vnet_hub2_netspoke" {
+  source              = "../../tf-bootstrap-modules/modules/vnet"
+  name               = module.naming_hub2_netspoke_vnet.vnet_name
+  region = var.region
+  resource_group_name = module.rg_hub2_netspoke.resource_group_name
+  address_space = ["10.2.0.0/16"]
+  subnet_name        = module.naming_hub2_netspoke_subnet.subnet_name
+  subnet_prefix      = "10.2.0.0/16"
+  tags               = local.all_tags
+}
+
+###################
+# Virtual Machine #
+###################
+module "vm_hub1" {
+  source              = "../../tf-bootstrap-modules/modules/vm"
+  vm_name                = module.naming_vm.vm_name
+  region            = var.region
+  resource_group_name = module.rg_hub1_netspoke.resource_group_name
+  subnet_id         = module.vnet_hub1_netspoke.subnet_id
+  admin_ssh_key = file("/Users/moeraki/.ssh/id_rsa.pub")
+  tags                = local.all_tags
+}
+
+####################
+# Private DNS Zone #
+####################
+module "private_dns_zone_hub1" {
+    source = "../../tf-bootstrap-modules/modules/private_dns_zone"
+    private_dns_zone_name = module.naming_hub1_prv_dnszone.private_dns_zone_name
+    resource_group_name = module.rg_hub1_netspoke.resource_group_name
+    tags                = local.all_tags
+}
+
+module "private_dns_zone_hub2" {
+    source = "../../tf-bootstrap-modules/modules/private_dns_zone"
+    private_dns_zone_name = module.naming_hub2_prv_dnszone.private_dns_zone_name
+    resource_group_name = module.rg_hub2_netspoke.resource_group_name
+    tags                = local.all_tags
+}
+
+###################
+# Web Application #
+###################
+module "webapp_hub2" {
+  source              = "../../tf-bootstrap-modules/modules/webapp"
+  name                = module.naming_webapp.webapp_name
+  region            = var.region
+  resource_group_name = module.rg_hub2_netspoke.resource_group_name
+  tags                = local.all_tags
+}
+
+####################
+# Private Endpoint #
+####################
+module "private_endpoint_hub2" {
+    source = "../../tf-bootstrap-modules/modules/private_endpoint"
+    private_endpoint_name = module.naming_prv_endpoint.private_endpoint_name
+    region = var.region
+    subnet_id = module.vnet_hub2_netspoke.subnet_id
+    resource_group_name = module.rg_hub2_netspoke.resource_group_name
+    private_connection_resource_id = module.webapp_hub2.webapp_id
+    subresource_names = ["sites"]
+    tags                = local.all_tags
+}
