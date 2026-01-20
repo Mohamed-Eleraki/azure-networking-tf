@@ -25,6 +25,8 @@ resource "azurerm_virtual_machine" "vm" {
 	resource_group_name   = var.resource_group_name
 	network_interface_ids = [azurerm_network_interface.nic.id]
 	vm_size               = var.vm_size
+	delete_data_disks_on_termination = true
+    delete_os_disk_on_termination    = true
 	storage_os_disk {
 		name              = "${var.vm_name}-osdisk"
 		caching           = "ReadWrite"

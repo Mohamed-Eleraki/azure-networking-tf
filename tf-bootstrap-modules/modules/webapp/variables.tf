@@ -34,7 +34,7 @@ variable "sku_size" {
 variable "os_type" {
   description = "Operating system for the Service Plan: Windows or Linux"
   type        = string
-  default     = "Windows"
+  default     = "Linux"
 }
 
 variable "tags" {
