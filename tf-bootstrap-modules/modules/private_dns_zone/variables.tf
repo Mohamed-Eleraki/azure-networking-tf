@@ -13,3 +13,11 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+variable "webapp_private_ip" {
+  description = "Private IP address of the web application to create an A record for"
+  type        = string
+}
+variable "virtual_network_id" {
+  description = "value of the Virtual Network ID to link with the Private DNS Zone"
+  type        = string
+}
