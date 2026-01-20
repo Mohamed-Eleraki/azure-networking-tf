@@ -131,7 +131,7 @@ module "private_dns_zone_hub1" {
     private_dns_zone_name = "netspoke.hub1.internal"
     resource_group_name = module.rg_hub1_netspoke.resource_group_name
     virtual_network_id = module.vnet_hub1_netspoke.vnet_id
-    webapp_private_ip = module.webapp_hub2.webapp_private_ip
+    webapp_private_ip = module.private_endpoint_hub2.private_endpoint_private_ip
     tags                = local.all_tags
 }
 
@@ -140,7 +140,7 @@ module "private_dns_zone_hub2" {
     private_dns_zone_name = "netspoke.hub2.internal"
     resource_group_name = module.rg_hub2_netspoke.resource_group_name
     virtual_network_id = module.vnet_hub2_netspoke.vnet_id
-    webapp_private_ip = module.webapp_hub2.webapp_private_ip
+    webapp_private_ip = module.private_endpoint_hub2.private_endpoint_private_ip
     tags                = local.all_tags
 }
 
