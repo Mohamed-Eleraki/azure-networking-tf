@@ -152,6 +152,8 @@ module "webapp_hub2" {
   name                = module.naming_webapp.webapp_name
   region            = var.region
   resource_group_name = module.rg_hub2_netspoke.resource_group_name
+  private_endpoint_ip = module.private_endpoint_hub2.private_endpoint_private_ip
+  subnet_id         = module.vnet_hub2_netspoke.subnet_id
   tags                = local.all_tags
 }
 
