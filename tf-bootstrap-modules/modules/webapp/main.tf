@@ -15,6 +15,7 @@ resource "azurerm_linux_web_app" "app_service" {
 	location            = var.region
 	resource_group_name = var.resource_group_name
 	service_plan_id     = azurerm_service_plan.service_plan.id
+	public_network_access_enabled = false
 
 	site_config {
 		always_on = true
