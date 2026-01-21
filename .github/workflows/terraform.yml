@@ -74,6 +74,16 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+    - name: Debug paths
+      run: |
+        echo "Current working directory: $(pwd)"
+        echo "Contents of current directory:"
+        ls -la
+        echo "Contents of tf-environments directory:"
+        ls -la tf-environments
+        echo "Contents of tf-environments/dev directory:"
+        ls -la tf-environments/dev
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       working-directory: tf-environments/dev
