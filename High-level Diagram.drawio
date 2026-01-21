@@ -1,0 +1,106 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.7 Chrome/138.0.7204.251 Electron/37.7.1 Safari/537.36" version="28.2.7">
+  <diagram name="Page-1" id="-j8TM4fL662WvJmOtsM1">
+    <mxGraphModel dx="1501" dy="49" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gR7RcQkv49DrZGXrLHux-1" value="" style="rounded=0;arcSize=10;dashed=1;fillColor=none;gradientColor=none;dashPattern=8 4 1 4;strokeWidth=1;strokeColor=#004C99;" vertex="1" parent="1">
+          <mxGeometry x="180" y="982" width="763" height="286.6" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-5" value="Hub-rg" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/ResourceGroup.svg;" vertex="1" parent="1">
+          <mxGeometry x="161.25" y="968" width="37.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-6" value="" style="rounded=0;arcSize=10;dashed=1;fillColor=none;gradientColor=none;dashPattern=8 4 1 4;strokeWidth=1;strokeColor=#004C99;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1028" width="690" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-2" value="Hub Vnet" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.virtual_network;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="206" y="1015" width="50" height="27.500000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-10" value="" style="rounded=0;arcSize=10;dashed=1;fillColor=#EDFFED;gradientColor=none;dashPattern=1 2;strokeWidth=1;strokeColor=#006AD5;" vertex="1" parent="1">
+          <mxGeometry x="279" y="1078" width="611" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-9" value="Public Subnet" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" vertex="1" parent="1">
+          <mxGeometry x="258" y="1066" width="43" height="25.75" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-11" value="Private DNS" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/DNS_Zones.svg;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1128" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-12" value="landing-VM" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" vertex="1" parent="1">
+          <mxGeometry x="690" y="1123" width="64.69" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-13" value="NSG" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Network_Security_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="265.45" y="1143.88" width="28.1" height="34.12" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 4 1 4;" edge="1" parent="1" source="gR7RcQkv49DrZGXrLHux-14" target="gR7RcQkv49DrZGXrLHux-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-14" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.user;" vertex="1" parent="1">
+          <mxGeometry x="698.6" y="880" width="47.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-16" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.015;entryY=0.49;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;dashPattern=8 4 1 4;" edge="1" parent="1" source="gR7RcQkv49DrZGXrLHux-11" target="gR7RcQkv49DrZGXrLHux-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="1348" as="sourcePoint" />
+            <mxPoint x="380" y="1298" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-17" value="" style="rounded=0;arcSize=10;dashed=1;fillColor=none;gradientColor=none;dashPattern=8 4 1 4;strokeWidth=1;strokeColor=#004C99;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1354" width="763" height="286.6" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-18" value="Spoke-rg" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/ResourceGroup.svg;" vertex="1" parent="1">
+          <mxGeometry x="161.25" y="1340" width="37.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-19" value="" style="rounded=0;arcSize=10;dashed=1;fillColor=none;gradientColor=none;dashPattern=8 4 1 4;strokeWidth=1;strokeColor=#004C99;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1400" width="690" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-20" value="Spoke Vnet" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.virtual_network;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="206" y="1387" width="50" height="27.500000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-21" value="" style="rounded=0;arcSize=10;dashed=1;fillColor=#E2ECFC;dashPattern=1 2;strokeWidth=1;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="279" y="1450" width="611" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-22" value="Private Subnet" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" vertex="1" parent="1">
+          <mxGeometry x="258" y="1438" width="43" height="25.75" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-23" value="Private DNS" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/DNS_Zones.svg;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1500" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-25" value="NSG" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Network_Security_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="265.45" y="1515.88" width="28.1" height="34.12" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-26" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;dashed=1;dashPattern=8 4 1 4;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="443" y="1532" as="sourcePoint" />
+            <mxPoint x="553" y="1532" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-27" value="Private endpiont" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/Private_Endpoints.svg;" vertex="1" parent="1">
+          <mxGeometry x="559.62" y="1500" width="52.57" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-28" value="WebApp" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Services.svg;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1509.41" width="47.06" height="47.06" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-30" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.009;entryY=0.485;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;dashPattern=8 4 1 4;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="616.58" y="1532.74" as="sourcePoint" />
+            <mxPoint x="727.00354" y="1532.9741000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-31" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;dashPattern=8 4 1 4;" edge="1" parent="1" target="gR7RcQkv49DrZGXrLHux-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="1210" as="sourcePoint" />
+            <mxPoint x="790.42354" y="1440.2341000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-32" value="Vnet Peering" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/Peerings.svg;" vertex="1" parent="1">
+          <mxGeometry x="345.48" y="1281" width="44.52" height="37.92" as="geometry" />
+        </mxCell>
+        <mxCell id="gR7RcQkv49DrZGXrLHux-33" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;dashed=1;dashPattern=8 4 1 4;entryX=0.129;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="gR7RcQkv49DrZGXrLHux-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="319" y="1249" as="sourcePoint" />
+            <mxPoint x="316.52" y="1400.44" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
