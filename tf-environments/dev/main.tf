@@ -119,7 +119,11 @@ module "vm_hub1" {
   region            = var.region
   resource_group_name = module.rg_hub1_netspoke.resource_group_name
   subnet_id         = module.vnet_hub1_netspoke.subnet_id
-  admin_ssh_key = file("/Users/moeraki/.ssh/id_rsa.pub")
+  # Read the SSH public key from a variable provided to the environment
+  # (do NOT call file() with an absolute path here — Terraform only allows
+  # file() for files inside the configuration). Provide the key via
+  # dev.tfvars, -var, or the TF_VAR_admin_ssh_key env var.
+  admin_ssh_key = var.admin_ssh_key
   tags                = local.all_tags
 }
 
