@@ -1,15 +1,15 @@
-terraform { 
-  cloud { 
-    
-    organization = "HCP-remote-organization" 
+terraform {
+  cloud {
 
-    workspaces { 
-      name = "Demo01" 
-    } 
-  } 
+    organization = "HCP-remote-organization"
+
+    workspaces {
+      name = "Demo01"
+    }
+  }
 }
 
 provider "azurerm" {
   features {}
-  subscription_id                 = var.subscription_id
+  subscription_id = var.subscription_id
 }
