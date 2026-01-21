@@ -123,7 +123,7 @@ module "vm_hub1" {
   # (do NOT call file() with an absolute path here — Terraform only allows
   # file() for files inside the configuration). Provide the key via
   # dev.tfvars, -var, or the TF_VAR_admin_ssh_key env var.
-  admin_ssh_key = var.admin_ssh_key
+  # admin_ssh_key = var.admin_ssh_key
   tags          = local.all_tags
 }
 

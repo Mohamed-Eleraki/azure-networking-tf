@@ -78,18 +78,25 @@ variable "admin_username" {
   default     = "ubuntu"
 }
 
-variable "admin_ssh_key" {
-  description = "OpenSSH public key string for admin user (authorized_keys content). This variable is required."
-  type        = string
-  sensitive   = true
-  validation {
-    condition     = length(var.admin_ssh_key) > 0
-    error_message = "admin_ssh_key must be provided and contain your OpenSSH public key string."
-  }
-}
+# variable "admin_ssh_key" {
+#   description = "OpenSSH public key string for admin user (authorized_keys content). This variable is required."
+#   type        = string
+#   sensitive   = true
+#   validation {
+#     condition     = length(var.admin_ssh_key) > 0
+#     error_message = "admin_ssh_key must be provided and contain your OpenSSH public key string."
+#   }
+# }
 
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
   default     = {}
+}
+
+variable "admin_password" {
+  description = "Admin password for the VM"
+  type        = string
+  sensitive   = true
+  default     = ""
 }
