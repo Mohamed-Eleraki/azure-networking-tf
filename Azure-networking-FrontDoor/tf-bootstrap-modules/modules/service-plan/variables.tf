@@ -1,0 +1,38 @@
+variable "name" {
+  description = "Name of the App Service (web app)"
+  type        = string
+}
+
+variable "plan_name" {
+  description = "Optional name of the App Service Plan. If null, defaults to <name>-plan"
+  type        = string
+  default     = null
+}
+
+variable "resource_group_name" {
+  description = "Name of the resource group where the app will be created"
+  type        = string
+}
+
+variable "region" {
+  description = "Azure location/region for the resources"
+  type        = string
+}
+
+variable "sku_size" {
+  description = "SKU size for the App Service Plan (e.g. B1, S1)"
+  type        = string
+  default     = "B1"
+}
+
+variable "os_type" {
+  description = "Operating system for the Service Plan: Windows or Linux"
+  type        = string
+  default     = "Linux"
+}
+
+variable "tags" {
+  description = "Tags to apply to resources"
+  type        = map(string)
+  default     = {}
+}
