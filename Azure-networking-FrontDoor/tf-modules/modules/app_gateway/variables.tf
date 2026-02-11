@@ -44,3 +44,8 @@ variable "environment" {
   description = "define environment prod, dev, uat, preprod"
   type = string
 }
+
+variable "appgw_nsg_name" {
+  description = "network security group name"
+  type = string
+}

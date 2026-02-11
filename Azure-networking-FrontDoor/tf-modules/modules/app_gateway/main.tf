@@ -120,3 +120,56 @@ resource "azurerm_web_application_firewall_policy" "appgw_waf_policy" {
   }
   tags = var.tags
 }
+
+resource "azurerm_network_security_group" "appgw_nsg" {
+  name                = var.appgw_nsg_name
+  location            = var.region
+  resource_group_name = var.resource_group_name
+}
+
+resource "azurerm_network_security_rule" "allow_frontdoor_to_appgw_https" {
+  name                        = "Allow-FrontDoor-HTTPS"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "80"
+  source_address_prefix       = "AzureFrontDoor.Backend"
+  destination_address_prefix  = "*"
+  resource_group_name         = var.resource_group_name
+  network_security_group_name = azurerm_network_security_group.appgw_nsg.name
+}
+resource "azurerm_network_security_rule" "allow_gateway_manager" {
+  name                        = "Allow-GatewayManager"
+  priority                    = 110
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "65200-65535"
+
+  source_address_prefix       = "Internet"
+  destination_address_prefix  = "*"
+
+  resource_group_name         = var.resource_group_name
+  network_security_group_name = azurerm_network_security_group.appgw_nsg.name
+}
+
+# resource "azurerm_network_security_rule" "deny_all_inbound" {
+#   name                        = "Deny-All-Inbound"
+#   priority                    = 2001
+#   direction                   = "Inbound"
+#   access                      = "Deny"
+#   protocol                    = "*"
+#   source_port_range           = "*"
+#   destination_port_range      = "*"
+#   source_address_prefix       = "*"
+#   destination_address_prefix  = "*"
+#   resource_group_name         = var.resource_group_name
+#   network_security_group_name = azurerm_network_security_group.appgw_nsg.name
+# }
+resource "azurerm_subnet_network_security_group_association" "appgw_nsg_assoc" {
+  subnet_id                 = var.subnet_id
+  network_security_group_id = azurerm_network_security_group.appgw_nsg.id
+}

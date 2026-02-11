@@ -38,7 +38,7 @@ resource "azurerm_cdn_frontdoor_origin_group" "fd-backend-group" {  # Back-end G
 resource "azurerm_cdn_frontdoor_origin" "fd-backend-instances" { # Back-end instance
   for_each = var.appgw_FQDN
 
-  name                          = "fd-backend-instances"
+  name                          = "fd-backend-instances-${each.key}"
   cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.fd-backend-group.id
   enabled = true
   certificate_name_check_enabled = false
